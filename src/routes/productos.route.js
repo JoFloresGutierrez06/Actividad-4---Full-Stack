@@ -1,0 +1,15 @@
+const express = require("express");
+const controller = require("../controllers/productos.controller")
+// const {getAll, getById} = require("../controllers/productos.controller") - Se puede utilizar así también
+
+const router = express.Router()
+
+router.get("/all", controller.getAll)      // todo esto se almacena en la variable router
+router.get("/", controller.getAllActive)     
+router.get("/search", controller.search)    // /search?nombre=cable&precio=300  
+router.get("/:id", controller.getById)
+router.post("/", controller.create)
+router.put("/:id", controller.update)
+router.delete("/:id", controller.remove)
+
+module.exports = {router}; // se manda a llamar en el index
